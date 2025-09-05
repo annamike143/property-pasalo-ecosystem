@@ -1,0 +1,162 @@
+/* --- apps/admin-portal/src/components/ListingBuilder.css --- */
+.page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #ffffff;
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e0e6ed;
+}
+
+.form-header h1 {
+    color: #2c3e50;
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.action-button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.action-button.draft {
+    background-color: #6c757d;
+    color: white;
+}
+
+.action-button.draft:hover {
+    background-color: #5a6268;
+}
+
+.action-button.publish {
+    background-color: #28a745;
+    color: white;
+}
+
+.action-button.publish:hover {
+    background-color: #218838;
+}
+
+.form-section {
+    background-color: #f8f9fa;
+    border: 1px solid #e0e6ed;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.form-section h2 {
+    color: #2c3e50;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 1.5rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #3498db;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #34495e;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e0e6ed;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    background-color: white;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.field-description {
+    font-size: 0.9rem;
+    color: #5a6472;
+    margin-top: 0.25rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .page-container {
+        padding: 1rem;
+        margin: 0;
+    }
+
+    .form-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+
+    .form-header h1 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .form-actions {
+        justify-content: center;
+    }
+
+    .action-button {
+        flex: 1;
+        padding: 1rem;
+    }
+
+    .form-section {
+        padding: 1.5rem;
+    }
+
+    .form-section h2 {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-container {
+        padding: 0.5rem;
+    }
+
+    .form-section {
+        padding: 1rem;
+    }
+
+    .action-button {
+        font-size: 0.9rem;
+        padding: 0.75rem;
+    }
+}

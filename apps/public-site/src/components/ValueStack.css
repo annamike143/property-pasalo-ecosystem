@@ -1,0 +1,57 @@
+/* --- apps/public-site/src/components/ValueStack.css --- */
+.value-stack-section {
+  background-color: var(--dark-navy, #0A2540);
+  color: var(--white, #ffffff);
+}
+
+.value-stack-container {
+  text-align: center;
+  max-width: 800px;
+}
+
+.value-stack-container h2 {
+  color: var(--white, #ffffff);
+  margin-bottom: 3rem;
+}
+
+.value-stack-box {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 1rem 2rem; /* Adjusted padding */
+}
+
+.value-item {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 1.2rem;
+  text-align: left;
+}
+
+.value-item:last-of-type {
+  border-bottom: none;
+}
+
+.value-item span:first-child {
+  font-weight: 500;
+  padding-right: 1rem; /* Add space between text and value */
+}
+.value-item span:last-child {
+  font-weight: 700;
+  white-space: nowrap; /* Prevent value from wrapping */
+}
+
+.total-value {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0 0 0;
+  margin-top: 1rem;
+  border-top: 2px solid var(--primary-blue, #00a9e0);
+  font-family: var(--font-heading, 'Poppins');
+  font-size: 1.8rem;
+}

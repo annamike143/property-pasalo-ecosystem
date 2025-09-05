@@ -1,0 +1,129 @@
+/* --- apps/admin-portal/src/components/ImageUploader.css --- */
+.uploader-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.preview-box {
+    width: 200px;
+    height: 150px;
+    border: 2px dashed #cbd5e0;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+}
+
+.preview-box:hover {
+    border-color: #3498db;
+}
+
+.image-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.preview-box span {
+    color: #6c757d;
+    font-size: 0.95rem;
+    text-align: center;
+    padding: 1rem;
+}
+
+.uploader-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex: 1;
+    min-width: 200px;
+}
+
+.upload-button {
+    background-color: #3498db;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: none;
+    text-decoration: none;
+}
+
+.upload-button:hover {
+    background-color: #2980b9;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+}
+
+.upload-button.disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.upload-button.disabled:hover {
+    background-color: #95a5a6;
+    transform: none;
+    box-shadow: none;
+}
+
+.error-text {
+    color: #e74c3c;
+    font-size: 0.9rem;
+    margin: 0;
+    padding: 0.5rem;
+    background-color: #fdeaea;
+    border: 1px solid #f5c6cb;
+    border-radius: 6px;
+    line-height: 1.4;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .uploader-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .preview-box {
+        width: 100%;
+        max-width: 300px;
+        height: 200px;
+    }
+
+    .uploader-controls {
+        width: 100%;
+        max-width: 300px;
+        align-items: center;
+    }
+
+    .upload-button {
+        width: 100%;
+        padding: 1.25rem;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .preview-box {
+        height: 160px;
+    }
+
+    .upload-button {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+}

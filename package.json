@@ -1,13 +1,31 @@
 {
   "name": "property-pasalo-ecosystem",
   "version": "1.0.0",
-  "description": "",
+  "description": "Property Pasalo Ecosystem - Monorepo with admin portal and Firebase functions",
   "main": "index.js",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "test": "turbo test"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3",
+    "turbo": "^2.1.3"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs"
+  "packageManager": "npm@10.8.3",
+  "dependencies": {
+    "framer-motion": "^12.23.12",
+    "react-icons": "^5.5.0",
+    "tinify": "^1.8.1"
+  }
 }

@@ -1,0 +1,34 @@
+/* --- apps/public-site/src/components/Solution.css --- */
+.solution-section {
+  background-color: var(--white, #ffffff);
+}
+
+.solution-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .solution-grid {
+    grid-template-columns: 1fr 1.25fr; /* Give more space to the story */
+    gap: 5rem;
+  }
+}
+
+.founder-image-wrapper {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  line-height: 0;
+}
+
+.founder-story-wrapper h2 {
+  margin-bottom: 2rem;
+}
+
+.founder-story-wrapper p {
+  font-size: 1.2rem; /* Slightly larger for impact */
+  margin-bottom: 2rem;
+}

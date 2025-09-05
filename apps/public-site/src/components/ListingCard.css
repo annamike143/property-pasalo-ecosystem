@@ -1,0 +1,44 @@
+/* --- apps/public-site/src/components/ListingCard.css --- */
+.listing-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.listing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+.card-image-container {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    background: #eee;
+}
+.card-image-placeholder { display: flex; align-items: center; justify-content: center; height: 100%; color: #999; }
+.sold-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: #0A2540;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+.listing-card.sold .card-image-container::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255, 255, 255, 0.5);
+}
+.card-content { padding: 1.5rem; }
+.card-content h3 { font-family: 'Poppins', sans-serif; color: #0A2540; margin: 0 0 0.5rem 0; font-size: 1.2rem; }
+.price { font-weight: 600; color: #0B6E4F; font-size: 1.1rem; margin: 0 0 1rem 0; }
+.card-cta { color: #2B73FC; font-weight: 600; }
+.listing-card.sold .card-cta { color: #6c757d; }

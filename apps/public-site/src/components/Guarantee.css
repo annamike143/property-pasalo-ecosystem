@@ -1,0 +1,47 @@
+/* --- apps/public-site/src/components/Guarantee.css --- */
+.guarantee-section {
+  background-color: var(--background-gray, #f7f9fc);
+}
+.guarantee-container {
+  max-width: 800px;
+  text-align: center;
+}
+.guarantee-box {
+  border: 2px solid var(--border-color, #e1e4e8);
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  background-color: var(--white, #ffffff);
+  margin-bottom: 3rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+.guarantee-icon {
+  font-size: 3rem;
+  color: var(--primary-green, #0B6E4F); /* Using Trust Green */
+  margin-bottom: 1.5rem;
+}
+.guarantee-box h3 {
+  margin-bottom: 1.5rem;
+}
+.guarantee-box p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+.final-cta {
+  transform: scale(1.1); /* Make the final CTA slightly larger */
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1.1);
+        box-shadow: 0 8px 25px rgba(0, 169, 224, 0.5);
+    }
+    50% {
+        transform: scale(1.15);
+        box-shadow: 0 12px 35px rgba(0, 169, 224, 0.7);
+    }
+    100% {
+        transform: scale(1.1);
+        box-shadow: 0 8px 25px rgba(0, 169, 224, 0.5);
+    }
+}

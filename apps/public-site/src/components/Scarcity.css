@@ -1,0 +1,64 @@
+/* --- apps/public-site/src/components/Scarcity.css --- */
+.scarcity-section {
+  background-color: var(--white, #ffffff);
+  text-align: center;
+}
+
+.scarcity-container {
+  max-width: 800px;
+}
+
+.price-drop {
+  font-family: var(--font-heading, 'Poppins');
+  font-size: 4rem;
+  font-weight: 700;
+  color: #999;
+  margin-bottom: 1rem;
+}
+
+.strikethrough {
+  position: relative;
+  display: inline-block;
+}
+.strikethrough::after {
+  content: '';
+  position: absolute;
+  left: -5%;
+  right: -5%;
+  top: 50%;
+  height: 8px;
+  background-color: #dc3545; /* Red */
+  transform: rotate(-5deg);
+}
+
+.scarcity-container h3 {
+  font-size: 1.8rem;
+  color: var(--dark-navy, #0A2540);
+  margin-bottom: 2rem;
+}
+
+.scarcity-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  max-width: 700px;
+  margin: 0 auto 2rem auto;
+}
+
+.embedded-live-slots {
+  margin-top: 2rem;
+  padding: 2rem;
+  border: 2px dashed var(--border-color, #e1e4e8);
+  border-radius: 12px;
+  display: inline-block;
+}
+
+/* We need to adjust the LiveSlots styles when embedded here */
+.embedded-live-slots .live-slots-data {
+    font-size: 4rem; /* Make it a bit smaller */
+}
+.embedded-live-slots .live-slots-label {
+    letter-spacing: 1px;
+}
+.embedded-live-slots .live-slots-link {
+    display: none; /* Hide the link to the status page */
+}

@@ -1,0 +1,24 @@
+/* --- apps/admin-portal/src/app/(admin)/listings/listings.css --- */
+.page-container { padding: 1rem; }
+.page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+.page-header h1 { margin: 0; }
+.add-new-button { background-color: #0B6E4F; color: white; padding: 0.75rem 1.5rem; text-decoration: none; border-radius: 6px; font-weight: 600; }
+.controls-container { display: flex; gap: 1rem; margin-bottom: 2rem; }
+.search-bar { flex-grow: 1; padding: 0.75rem; border: 1px solid #ccc; border-radius: 6px; }
+.filter-select { padding: 0.75rem; border: 1px solid #ccc; border-radius: 6px; }
+.table-container { background-color: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); overflow: hidden; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 1rem; text-align: left; border-bottom: 1px solid #e1e4e8; }
+th { background-color: #f6f7f9; font-size: 0.9rem; text-transform: uppercase; }
+td strong { display: block; }
+td small { color: #5a6472; }
+.thumbnail-container { width: 80px; height: 60px; border-radius: 4px; overflow: hidden; background: #eee; display: flex; align-items: center; justify-content: center; }
+.thumbnail-placeholder { font-size: 0.8rem; color: #999; }
+.status-badge { padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem; font-weight: 600; color: white; }
+.status-badge.available { background-color: #28a745; }
+.status-badge.sold { background-color: #6c757d; }
+.status-badge.draft { background-color: #ffc107; color: #333; }
+.action-button { padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; text-decoration: none; display: inline-block; margin-right: 0.5rem; font-weight: 500; }
+.action-button.edit { background-color: #007bff; color: white; border: 1px solid #007bff; }
+.action-button.delete { background-color: transparent; color: #dc3545; border: 1px solid #dc3545; }
+.no-results { text-align: center; padding: 3rem; color: #5a6472; }

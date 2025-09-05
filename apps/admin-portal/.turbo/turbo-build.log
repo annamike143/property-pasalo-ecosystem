@@ -1,0 +1,53 @@
+
+> admin-portal@0.1.0 build
+> next build
+
+ ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of C:\Users\mikes\Documents\property-pasalo-ecosystem\package-lock.json as the root directory.
+ To silence this warning, set `outputFileTracingRoot` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/output#caveats for more information.
+ Detected additional lockfiles: 
+   * C:\Users\mikes\Documents\property-pasalo-ecosystem\apps\admin-portal\package-lock.json
+
+   ▲ Next.js 15.5.2
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 2.1s
+   Linting and checking validity of types ...
+
+./src/components/ImageUploader.tsx
+99:21  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules
+   Collecting page data ...
+   Generating static pages (0/13) ...
+   Generating static pages (3/13) 
+   Generating static pages (6/13) 
+   Generating static pages (9/13) 
+ ✓ Generating static pages (13/13)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+┌ ○ /                                    1.26 kB         183 kB
+├ ○ /_not-found                            988 B         103 kB
+├ ○ /clients                               134 B         102 kB
+├ ○ /content                             16.4 kB         199 kB
+├ ○ /dashboard                             340 B         102 kB
+├ ○ /homeowners                            134 B         102 kB
+├ ○ /inquiries                             134 B         102 kB
+├ ○ /listings                            6.75 kB         192 kB
+├ ƒ /listings/edit/[id]                    134 B         185 kB
+├ ○ /listings/new                          134 B         185 kB
+├ ○ /settings                              134 B         102 kB
+└ ○ /testimonials                          134 B         102 kB
++ First Load JS shared by all             102 kB
+  ├ chunks/18-ef38cc2f87045b34.js        45.9 kB
+  ├ chunks/87c73c54-24122e7b92478d00.js  54.2 kB
+  └ other shared chunks (total)          2.02 kB
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

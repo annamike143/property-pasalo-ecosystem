@@ -1,0 +1,25 @@
+/* --- apps/public-site/src/components/Reminder.css --- */
+.reminder-section {
+  background-color: var(--dark-navy, #0A2540);
+  color: #ccc;
+  padding: 3rem 1.5rem;
+}
+
+.reminder-container {
+  max-width: 800px;
+  font-size: 1rem;
+  text-align: left;
+  line-height: 1.7;
+}
+
+.reminder-container p {
+  margin-bottom: 1.5rem;
+}
+
+.reminder-container p:last-child {
+  margin-bottom: 0;
+}
+
+.reminder-container strong {
+  color: var(--white, #ffffff);
+}

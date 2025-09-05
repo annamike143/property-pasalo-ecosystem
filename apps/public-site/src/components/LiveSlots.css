@@ -1,0 +1,6 @@
+/* --- apps/public-site/src/components/LiveSlots.css --- */
+.live-slots-container { display: flex; flex-direction: column; align-items: center; margin-top: 2rem; }
+.live-slots-data { font-size: 5rem; font-weight: 700; color: var(--accent-gold); line-height: 1; text-shadow: 0 0 20px rgba(242, 183, 5, 0.5); }
+.live-slots-label { font-family: var(--font-heading); font-weight: 700; letter-spacing: 2px; color: var(--dark-navy); margin-top: 0.5rem; }
+.live-slots-link { margin-top: 1rem; color: var(--supporting-gray); text-decoration: underline; font-size: 0.9rem; }
+.live-slots-link:hover { color: var(--action-blue); }

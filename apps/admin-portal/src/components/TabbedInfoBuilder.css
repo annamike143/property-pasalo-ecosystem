@@ -1,0 +1,14 @@
+/* --- apps/admin-portal/src/components/TabbedInfoBuilder.css --- */
+.tabbed-info-builder { border: 1px solid #ccc; border-radius: 8px; overflow: hidden; }
+.tabs-nav { display: flex; background-color: #f6f7f9; border-bottom: 1px solid #ccc; }
+.tab-handle { padding: 1rem; cursor: pointer; border-right: 1px solid #ccc; }
+.tab-handle.active { background-color: white; font-weight: 600; border-bottom: 1px solid white; margin-bottom: -1px; }
+.add-tab-btn { background: #eee; border: none; padding: 1rem; cursor: pointer; font-weight: bold; }
+.tab-content { padding: 1.5rem; }
+.tab-title-editor { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+.tab-title-editor input { flex-grow: 1; padding: 0.5rem; font-weight: bold; font-size: 1.2rem; border: 1px solid #ccc; border-radius: 4px; }
+.remove-tab-btn { background-color: #dc3545; color: white; border: none; border-radius: 4px; padding: 0 1rem; cursor: pointer; }
+.kv-row { display: flex; gap: 1rem; margin-bottom: 1rem; align-items: center; }
+.kv-row input { flex: 1; padding: 0.75rem; border: 1px solid #ccc; border-radius: 6px; }
+.remove-row-btn { background-color: #6c757d; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; font-weight: bold; cursor: pointer; }
+.add-row-btn { background: #007bff; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; margin-top: 1rem; }

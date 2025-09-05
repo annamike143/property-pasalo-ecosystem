@@ -1,0 +1,9 @@
+/* --- apps/admin-portal/src/components/LandingPageBuilder.css --- */
+.builder-container { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+.builder-container h2 { margin-top: 0; }
+.section-list { margin-top: 2rem; }
+.section-card { display: flex; justify-content: space-between; align-items: center; background-color: #f6f7f9; padding: 1rem 1.5rem; border: 1px solid #e1e4e8; border-radius: 6px; margin-bottom: 1rem; font-weight: 600; }
+.section-actions { display: flex; gap: 1rem; }
+.section-actions button { padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 500; border: 1px solid #ccc; background: white; }
+.section-actions button.delete { border-color: #dc3545; color: #dc3545; }
+.builder-actions { margin-top: 2rem; }
