@@ -14,7 +14,7 @@ const Header: React.FC<HeaderProps> = ({ onCtaClick }) => {
     <header className="header">
       <div className="container header-container">
         <Link href="/">
-          <Image src="/logo-wordmark.png" alt="Property Pasalo Logo" width={160} height={40} className="logo"/>
+          <Image src="/logo-wordmark.svg" alt="Property Pasalo Logo" width={160} height={40} className="logo"/>
         </Link>
         <nav className="header-nav">
           <Link href="/listings" className="nav-link">View All Listings</Link>

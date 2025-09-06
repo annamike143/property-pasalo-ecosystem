@@ -1,4 +1,4 @@
-/* --- apps/public-site/src/components/Benefits.css --- */
+/* --- apps/public-site/src/components/Benefits.css (DEFINITIVE FINAL POLISH) --- */
 .benefits-section {
   background-color: var(--background-gray, #f7f9fc);
 }
@@ -6,28 +6,35 @@
 .benefits-headline {
   text-align: center;
   margin-bottom: 4rem;
+  max-width: 700px; /* Constrain headline for better focus */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .benefits-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2.5rem;
+  gap: 3rem; /* Increased gap */
 }
 
+/* Responsive grid setup */
 @media (min-width: 576px) {
   .benefits-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
   }
 }
 
 @media (min-width: 992px) {
   .benefits-grid {
     grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
   }
 }
 
 .benefit-card {
   text-align: center;
+  padding: 1rem; /* Add some padding for spacing */
 }
 
 .benefit-icon {
@@ -35,13 +42,16 @@
   color: var(--primary-blue, #00a9e0);
   margin-bottom: 1.5rem;
   display: inline-block;
+  line-height: 1;
 }
 
 .benefit-card h3 {
+  font-size: var(--h3-size);
   margin-bottom: 1rem;
 }
 
 .benefit-card p {
   font-size: 1rem;
   line-height: 1.6;
+  color: var(--supporting-gray);
 }

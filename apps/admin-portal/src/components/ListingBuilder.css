@@ -1,4 +1,4 @@
-/* --- apps/admin-portal/src/components/ListingBuilder.css --- */
+/* --- apps/admin-portal/src/components/ListingBuilder.css (ENHANCED) --- */
 .page-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -53,6 +53,14 @@
 
 .action-button.publish:hover {
     background-color: #218838;
+}
+
+.agent-info {
+    display: block;
+    margin-top: 0.5rem;
+    color: #6c757d;
+    font-style: italic;
+    font-size: 0.875rem;
 }
 
 .form-section {
@@ -159,4 +167,57 @@
         font-size: 0.9rem;
         padding: 0.75rem;
     }
+}
+
+/* Gallery Uploader Styles */
+.gallery-uploader {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.gallery-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #f9f9f9;
+}
+
+.remove-gallery-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.remove-gallery-btn:hover {
+    background: #c82333;
+}
+
+.add-gallery-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px dashed #007bff;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.add-gallery-btn:hover {
+    background: #0056b3;
+    border-color: #0056b3;
 }

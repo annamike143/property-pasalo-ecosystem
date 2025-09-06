@@ -1,4 +1,4 @@
-/* --- apps/public-site/src/components/Solution.css --- */
+/* --- apps/public-site/src/components/Solution.css (DEFINITIVE FINAL POLISH) --- */
 .solution-section {
   background-color: var(--white, #ffffff);
 }
@@ -12,7 +12,7 @@
 
 @media (min-width: 992px) {
   .solution-grid {
-    grid-template-columns: 1fr 1.25fr; /* Give more space to the story */
+    grid-template-columns: 1fr 1.25fr;
     gap: 5rem;
   }
 }
@@ -29,6 +29,15 @@
 }
 
 .founder-story-wrapper p {
-  font-size: 1.2rem; /* Slightly larger for impact */
+  font-size: 1.2rem;
   margin-bottom: 2rem;
+}
+
+.founder-story-wrapper .founder-result-statement {
+  font-weight: 700;
+  font-family: var(--font-heading);
+  color: var(--dark-navy);
+  font-size: 1.5rem;
+  border-left: 4px solid var(--primary-blue);
+  padding-left: 1.5rem;
 }

@@ -19,7 +19,13 @@ const ListingCard: React.FC<ListingCardProps> = ({ slug, thumbnailUrl, propertyN
     <Link href={`/listings/${slug}`} className={`listing-card ${isSold ? 'sold' : ''}`}>
       <div className="card-image-container">
         {thumbnailUrl ? (
-          <Image src={thumbnailUrl} alt={`Thumbnail of ${propertyName}`} fill style={{ objectFit: 'cover' }} />
+          <Image 
+            src={thumbnailUrl} 
+            alt={`Thumbnail of ${propertyName}`} 
+            fill 
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            style={{ objectFit: 'cover' }} 
+          />
         ) : (
           <div className="card-image-placeholder">No Image</div>
         )}

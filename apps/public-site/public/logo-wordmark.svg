@@ -1,0 +1,5 @@
+<!-- Property Pasalo Logo -->
+<svg width="160" height="40" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#1f2937" rx="5"/>
+  <text x="80" y="25" text-anchor="middle" dy=".3em" fill="#ffffff" font-family="Arial" font-size="14" font-weight="bold">Property Pasalo</text>
+</svg>

@@ -18,17 +18,30 @@ const navStyles: React.CSSProperties = {
     gap: '1rem',
 };
 
-export const Header = () => {
+export interface HeaderProps {
+        onCtaClick?: () => void;
+        ctaText?: string;
+        homeHref?: string;
+        listingsHref?: string;
+        logoUrl?: string; // optional custom logo
+}
+
+export const Header: React.FC<HeaderProps> = ({ onCtaClick, ctaText = 'Sell My Property', homeHref = '/', listingsHref = '/listings', logoUrl }) => {
   return (
     <header style={headerStyles}>
-        <Link href="/">
-            {/* We need to add the logo to the public-site app's public folder later */}
-            {/* <Image src="/logo-wordmark.png" alt="Property Pasalo" width={150} height={40} /> */}
-            <span>Property Pasalo Logo</span>
-        </Link>
+                <Link href={homeHref}>
+                        {logoUrl ? (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img src={logoUrl} alt="Property Pasalo" width={160} height={40} style={{ objectFit: 'contain' }} />
+                        ) : (
+                            <span>Property Pasalo Logo</span>
+                        )}
+                </Link>
         <nav style={navStyles}>
-            <Link href="/listings">View All Listings</Link>
-            <button>Sell My Property</button>
+                        <Link href={listingsHref} style={{ padding: '0.5rem 0.75rem' }}>View All Listings</Link>
+                        <button onClick={onCtaClick} aria-label={ctaText} style={{ padding: '0.6rem 1rem', background: '#0B6E4F', color: 'white', border: 'none', borderRadius: 6 }}>
+                            {ctaText}
+                        </button>
         </nav>
     </header>
   );

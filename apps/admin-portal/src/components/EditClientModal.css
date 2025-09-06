@@ -1,0 +1,144 @@
+/* --- apps/admin-portal/src/components/EditClientModal.css (RESPONSIVE) --- */
+.modal-backdrop { 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  background: rgba(0,0,0,0.5); 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  z-index: 1000; 
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.modal-content { 
+  background: white; 
+  padding: 2rem; 
+  border-radius: 12px; 
+  width: 100%; 
+  max-width: 800px; 
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  margin: auto;
+}
+
+.modal-content h2 { 
+  margin-top: 0; 
+  color: #333;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 1rem;
+}
+
+.form-grid { 
+  display: grid; 
+  grid-template-columns: 1fr 2fr; 
+  gap: 2rem; 
+  margin-top: 2rem; 
+}
+
+.form-group { 
+  margin-bottom: 1.5rem; 
+}
+
+.form-group label { 
+  display: block; 
+  font-weight: 600; 
+  margin-bottom: 0.5rem; 
+  color: #555;
+}
+
+.form-group input, .form-group select, .form-group textarea { 
+  width: 100%; 
+  padding: 0.75rem; 
+  border: 1px solid #ccc; 
+  border-radius: 6px; 
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  border-color: #0B6E4F;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(11, 110, 79, 0.1);
+}
+
+.modal-actions { 
+  display: flex; 
+  justify-content: flex-end; 
+  gap: 1rem; 
+  margin-top: 2rem; 
+  border-top: 1px solid #e1e4e8; 
+  padding-top: 1.5rem; 
+}
+
+.modal-actions button { 
+  padding: 0.75rem 1.5rem; 
+  border-radius: 6px; 
+  cursor: pointer; 
+  font-weight: 600; 
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.cancel-btn { 
+  background-color: #6c757d; 
+  color: white; 
+}
+
+.cancel-btn:hover {
+  background-color: #5a6268;
+}
+
+.save-btn { 
+  background-color: var(--primary-green, #0B6E4F); 
+  color: white; 
+}
+
+.save-btn:hover {
+  background-color: #0a5d43;
+}
+
+.save-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .modal-backdrop {
+    padding: 10px;
+  }
+  
+  .modal-content {
+    padding: 1.5rem;
+    max-height: 95vh;
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .modal-actions {
+    flex-direction: column;
+  }
+  
+  .modal-actions button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  
+  .modal-content h2 {
+    font-size: 1.3rem;
+  }
+}

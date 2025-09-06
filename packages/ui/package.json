@@ -6,8 +6,11 @@
     ".": "./index.ts",
     "./header": "./Header.tsx",
     "./footer": "./Footer.tsx",
-    "./testimonials": "./testimonials.tsx"
+    "./testimonials": "./testimonials.tsx",
+  "./lead-capture-modal": "./LeadCaptureModal.tsx",
+  "./proof-widget": "./ProofWidget.tsx",
+  "./agent-profile-strip": "./AgentProfileStrip.tsx",
+  "./breadcrumbs": "./Breadcrumbs.tsx"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }

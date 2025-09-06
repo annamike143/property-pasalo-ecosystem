@@ -1,8 +1,7 @@
 // --- apps/public-site/src/components/SignupModal.tsx ---
 'use client';
-import React, { useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import './SignupModal.css';
+import React from 'react';
+import LeadCaptureModal from './LeadCaptureModal-Callable';
 
 interface SignupModalProps {
   isOpen: boolean;
@@ -10,26 +9,24 @@ interface SignupModalProps {
 }
 
 const SignupModal: React.FC<SignupModalProps> = ({ isOpen, onClose }) => {
-    useEffect(() => {
-        if (isOpen) { document.body.style.overflow = 'hidden'; } 
-        else { document.body.style.overflow = 'unset'; }
-        return () => { document.body.style.overflow = 'unset'; };
-    }, [isOpen]);
+  const sellerFields = [
+    { name: 'firstName', label: 'First Name', type: 'text', placeholder: 'Your first name', required: true },
+    { name: 'lastName', label: 'Last Name', type: 'text', placeholder: 'Your last name', required: true },
+    { name: 'email', label: 'Email Address', type: 'email', placeholder: 'your.email@example.com', required: false },
+    { name: 'phone', label: 'Phone Number', type: 'tel', placeholder: '+63 9XX XXX XXXX', required: false }
+  ];
 
-    // Placeholder for Brevo/Seller form HTML
-    const formHtml = `<div>FORM GOES HERE</div>`;
-    
-    return (
-        <AnimatePresence>
-            {isOpen && (
-                <motion.div className="modal-backdrop" onClick={onClose} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                    <motion.div className="modal-content" onClick={(e) => e.stopPropagation()} initial={{ scale: 0.9 }} animate={{ scale: 1 }} exit={{ scale: 0.9 }}>
-                        <button className="close-button" onClick={onClose}>&times;</button>
-                        <div dangerouslySetInnerHTML={{ __html: formHtml }} />
-                    </motion.div>
-                </motion.div>
-            )}
-        </AnimatePresence>
-    );
+  return (
+    <LeadCaptureModal
+      isOpen={isOpen}
+      onClose={onClose}
+      title="Get Your Property Pasalo Consultation"
+  description="Fill out the form below and we'll help you transition from renting to owning through our proven pasalo system."
+      fields={sellerFields}
+      ctaText="Get My Free Consultation"
+      formType="SELLER_INQUIRY"
+    />
+  );
 };
+
 export default SignupModal;

@@ -1,0 +1,16 @@
+/* --- apps/status-page/src/components/FeaturedListingsRotator.css --- */
+.rotator { display: grid; gap: 1rem; justify-items: center; }
+.rotator-card { display: grid; grid-template-columns: 200px 1fr; gap: 1rem; align-items: center; width: 100%; background: #fff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); padding: 1rem; }
+.rotator-thumb { width: 200px; height: 140px; object-fit: cover; border-radius: 6px; background: #f4f5f7; }
+.rotator-thumb.placeholder { display: block; }
+.rotator-body { display: grid; gap: 0.25rem; }
+.rotator-title { margin: 0; font-size: 1.25rem; }
+.rotator-location { margin: 0; color: #5a6472; }
+.rotator-price { margin: 0.25rem 0 0 0; font-weight: 600; }
+.rotator-link { margin-top: 0.5rem; color: #0a66c2; text-decoration: underline; }
+.rotator-controls { display: flex; align-items: center; gap: 0.75rem; }
+.rotator-controls button { background: #eef2f7; border: 0; border-radius: 6px; width: 36px; height: 36px; font-size: 1.25rem; cursor: pointer; }
+@media (max-width: 768px) {
+  .rotator-card { grid-template-columns: 1fr; }
+  .rotator-thumb { width: 100%; height: 180px; }
+}

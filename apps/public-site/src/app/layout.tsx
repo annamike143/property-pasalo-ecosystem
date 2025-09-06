@@ -2,6 +2,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Script from "next/script"; // Import the optimized Script component
+import { ClientProofWidget } from "./ClientProofWidget"; // We'll create this wrapper
+import { AgentProfileStrip } from "@repo/ui";
+import { Footer } from "@repo/ui/footer";
+import { database } from "@/firebase";
+import { ref, get } from "firebase/database";
 
 // This is the correct Next.js way to import our Google Fonts
 import { Inter, Poppins } from 'next/font/google';
@@ -32,15 +37,75 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+type FooterContent = {
+  copyrightText?: string;
+  poweredByText?: string;
+  poweredByLinkUrl?: string;
+  facebookUrl?: string;
+  youtubeUrl?: string;
+  tiktokUrl?: string;
+  linkedinUrl?: string;
+  instagramUrl?: string;
+  xUrl?: string;
+  customLinks?: { label: string; url: string; iconKey?: string }[];
+  footerLogoUrl?: string;
+};
+
+async function getFooterContent(): Promise<FooterContent> {
+  try {
+    const snap = await get(ref(database, 'siteContent/footer'));
+    return snap.exists() ? (snap.val() as FooterContent) : {};
+  } catch {
+    return {} as FooterContent;
+  }
+}
+
+async function getAgentProfile() {
+  try {
+    const snap = await get(ref(database, 'siteContent/agentProfile'));
+    return snap.exists() ? snap.val() : null;
+  } catch {
+    return null;
+  }
+}
+
+async function getBranding() {
+  try {
+    const snap = await get(ref(database, 'siteContent/branding'));
+    return snap.exists() ? snap.val() : {};
+  } catch {
+    return {};
+  }
+}
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const [footer, agentProfile, branding] = await Promise.all([
+    getFooterContent(),
+    getAgentProfile(),
+    getBranding(),
+  ]);
   return (
     <html lang="en">
       <body className={`${inter.variable} ${poppins.variable}`}>
         {children}
+        {agentProfile && <AgentProfileStrip {...agentProfile} />}
+        <Footer
+          copyrightText={footer?.copyrightText}
+          poweredByText={footer?.poweredByText}
+          poweredByLinkUrl={footer?.poweredByLinkUrl}
+          facebookUrl={footer?.facebookUrl}
+          youtubeUrl={footer?.youtubeUrl}
+          tiktokUrl={footer?.tiktokUrl}
+          linkedinUrl={footer?.linkedinUrl}
+          instagramUrl={footer?.instagramUrl}
+          xUrl={footer?.xUrl}
+          customLinks={footer?.customLinks}
+          footerLogoUrl={footer?.footerLogoUrl}
+        />
 
         {/* --- NEW: Meta Pixel Code using Next.js Script component --- */}
         <Script id="meta-pixel" strategy="afterInteractive">
@@ -62,6 +127,9 @@ export default function RootLayout({
                src="https://www.facebook.com/tr?id=778521148139639&ev=PageView&noscript=1" />
         </noscript>
         {/* --- End Meta Pixel Code --- */}
+
+  {/* --- Social Proof Widget --- */}
+  <ClientProofWidget />
       </body>
     </html>
   );

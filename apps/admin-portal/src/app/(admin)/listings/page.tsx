@@ -1,7 +1,7 @@
 // --- apps/admin-portal/src/app/(admin)/listings/page.tsx (FINAL) ---
 'use client';
 import React, { useState, useEffect, useMemo } from 'react';
-import { ref, onValue } from 'firebase/database';
+import { ref, onValue, remove } from 'firebase/database';
 import { database } from '@/firebase';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -15,6 +15,8 @@ interface Listing {
   status: 'AVAILABLE' | 'SOLD' | 'DRAFT';
   cashOutPrice?: number;
   thumbnailImageUrl?: string;
+  assignedAgentId?: string;
+  assignedAgentName?: string;
 }
 
 const ListingsPage = () => {
@@ -35,6 +37,21 @@ const ListingsPage = () => {
         });
         return () => unsubscribe();
     }, []);
+
+    const handleDeleteListing = async (listingId: string, propertyName: string) => {
+        if (!confirm(`Are you sure you want to delete "${propertyName}"? This action cannot be undone.`)) {
+            return;
+        }
+
+        try {
+            const listingRef = ref(database, `listings/${listingId}`);
+            await remove(listingRef);
+            alert('Listing deleted successfully!');
+        } catch (error) {
+            console.error('Error deleting listing:', error);
+            alert('Failed to delete listing. Please try again.');
+        }
+    };
 
     const filteredListings = useMemo(() => {
         return listings
@@ -85,6 +102,7 @@ const ListingsPage = () => {
                         <tr>
                             <th>Thumbnail</th>
                             <th>Property Name & Location</th>
+                            <th>Assigned Agent</th>
                             <th>Status</th>
                             <th>Cash-Out</th>
                             <th>Actions</th>
@@ -106,16 +124,28 @@ const ListingsPage = () => {
                                     <strong>{listing.propertyName}</strong>
                                     <small>{listing.location || 'No location set'}</small>
                                 </td>
+                                <td>
+                                    {listing.assignedAgentName ? (
+                                        <span className="agent-name">{listing.assignedAgentName}</span>
+                                    ) : (
+                                        <span className="no-agent">No agent assigned</span>
+                                    )}
+                                </td>
                                 <td><span className={`status-badge ${listing.status.toLowerCase()}`}>{listing.status}</span></td>
                                 <td>{listing.cashOutPrice ? `₱${listing.cashOutPrice.toLocaleString()}` : 'N/A'}</td>
                                 <td>
                                     <Link href={`/listings/edit/${listing.id}`} className="action-button edit">Edit</Link>
-                                    <button className="action-button delete">Delete</button>
+                                    <button 
+                                        className="action-button delete"
+                                        onClick={() => handleDeleteListing(listing.id!, listing.propertyName)}
+                                    >
+                                        Delete
+                                    </button>
                                 </td>
                             </tr>
                         )) : (
                             <tr>
-                                <td colSpan={5} className="no-results">No listings found.</td>
+                                <td colSpan={6} className="no-results">No listings found.</td>
                             </tr>
                         )}
                     </tbody>

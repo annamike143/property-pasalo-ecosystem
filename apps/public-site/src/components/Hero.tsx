@@ -1,8 +1,11 @@
-// --- apps/public-site/src/components/Hero.tsx ---
+// --- apps/public-site/src/components/Hero.tsx (DEFINITIVE FINAL POLISH) ---
 'use client';
+
 import React from 'react';
+import LiveSlots from './LiveSlots';
 import './Hero.css';
 
+// TypeScript Interface for our content structure
 interface HeroContent {
   attentionMessage: string;
   mainHeadline: string;
@@ -16,36 +19,46 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ content, onCtaClick }) => {
-  // For now, we use placeholder content if none is provided
+  // Provide a structured fallback to prevent errors if content is loading
   const displayContent = content || {
-    attentionMessage: 'LOADING ATTENTION MESSAGE...',
-    mainHeadline: 'LOADING MAIN HEADLINE...',
-    subHeadline: 'LOADING SUB-HEADLINE...',
+    attentionMessage: '...',
+    mainHeadline: 'Loading Your Shortcut to Homeownership...',
+    subHeadline: '...',
     benefitBullets: [],
   };
 
   return (
     <section className="hero-section">
       <div className="container hero-container">
-        <h3>{displayContent.attentionMessage}</h3>
-        <h1>{displayContent.mainHeadline}</h1>
-        <h2>{displayContent.subHeadline}</h2>
+        <h3 className="hero-attention-message">
+          {displayContent.attentionMessage}
+        </h3>
         
-        {displayContent.benefitBullets.length > 0 && (
-          <div className="hero-benefits">
-            <ul>
-              {displayContent.benefitBullets.map((bullet) => (
-                <li key={bullet.id}>{bullet.text}</li>
-              ))}
-            </ul>
-          </div>
-        )}
+        <h1 className="hero-main-headline">
+          {displayContent.mainHeadline}
+        </h1>
         
-        <div className="hero-cta">
-          <button className="hero-cta-button" onClick={onCtaClick}>
-            Get Started Today
-          </button>
+        <h2 className="hero-sub-headline">
+          {displayContent.subHeadline}
+        </h2>
+        
+        <div className="intrigue-section">
+          <ul className="intrigue-list">
+            {displayContent.benefitBullets.map((bullet) => (
+              <li key={bullet.id}>{bullet.text}</li>
+            ))}
+          </ul>
         </div>
+
+        <button className="cta-button-main" onClick={onCtaClick}>
+          VIEW AVAILABLE PROPERTIES
+        </button>
+        
+        <p className="urgency-snippet">
+          (Warning: This is a limited invitation for only 100 founding pioneers. Slots are filling fast.)
+        </p>
+
+        <LiveSlots />
       </div>
     </section>
   );

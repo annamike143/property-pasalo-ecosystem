@@ -18,12 +18,12 @@
   background-color: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;
-  padding: 1rem 2rem; /* Adjusted padding */
+  padding: 1rem 2rem;
 }
 
 .value-item {
   display: flex;
-  flex-wrap: wrap; /* Allow wrapping on small screens */
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 0;
@@ -38,11 +38,11 @@
 
 .value-item span:first-child {
   font-weight: 500;
-  padding-right: 1rem; /* Add space between text and value */
+  padding-right: 1rem;
 }
 .value-item span:last-child {
   font-weight: 700;
-  white-space: nowrap; /* Prevent value from wrapping */
+  white-space: nowrap;
 }
 
 .total-value {

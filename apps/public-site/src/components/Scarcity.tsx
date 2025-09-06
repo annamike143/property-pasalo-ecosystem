@@ -2,10 +2,9 @@
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
-import LiveSlots from './LiveSlots';
+import LiveSlots from './LiveSlots'; // We are re-using our powerful component
 import './Scarcity.css';
 
-// TypeScript Interface for our content
 interface ScarcityProps {
   content: {
     strikethroughPrice: string;

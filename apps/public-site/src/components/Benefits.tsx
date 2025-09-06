@@ -1,8 +1,8 @@
-// --- apps/public-site/src/components/Benefits.tsx ---
+// --- apps/public-site/src/components/Benefits.tsx (DEFINITIVE FINAL POLISH) ---
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaClock, FaBullseye, FaHandshake, FaChartLine } from 'react-icons/fa'; // Example icons
+import { FaClock, FaBullseye, FaHandshake, FaChartLine } from 'react-icons/fa';
 import './Benefits.css';
 
 // TypeScript Interfaces
@@ -18,7 +18,8 @@ interface BenefitsProps {
     benefits: Benefit[];
   };
 }
-// Icon Map to connect database string to a real icon
+
+// Icon Map to connect database string to a real icon component
 const iconMap: { [key: string]: React.ReactElement } = {
   FaClock: <FaClock />,
   FaBullseye: <FaBullseye />,

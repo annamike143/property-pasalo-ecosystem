@@ -1,4 +1,4 @@
-// --- apps/public-site/src/components/Testimonials.tsx ---
+// --- apps/public-site/src/components/Testimonials.tsx (DEFINITIVE FINAL POLISH) ---
 'use client';
 import React from 'react';
 import Image from 'next/image';
@@ -6,25 +6,27 @@ import { motion } from 'framer-motion';
 import useEmblaCarousel from 'embla-carousel-react';
 import './Testimonials.css';
 
-// TypeScript Interface for our testimonial data
-interface Testimonial {
+export interface Testimonial {
   id: string;
   clientName: string;
   clientPhotoUrl: string;
   quote: string;
-  title: string; // e.g., "E-commerce Seller"
+  title: string; // e.g., "Homeowner, Quezon City"
+  rating: number;
 }
 interface TestimonialsProps {
-  content: Testimonial[]; // Expects an array of testimonial objects
-  headline: string;
+  content: {
+    mainHeadline: string;
+    testimonials: Testimonial[];
+  };
 }
 
-const Testimonials: React.FC<TestimonialsProps> = ({ content, headline }) => {
+const Testimonials: React.FC<TestimonialsProps> = ({ content }) => {
   const [emblaRef] = useEmblaCarousel({ loop: true, align: 'start' });
-  const displayContent = content || [];
+  const displayContent = content || { mainHeadline: 'What Our Happy Homeowners Say', testimonials: [] };
 
-  if (displayContent.length === 0) {
-    return <p>Loading testimonials...</p>; // Or null
+  if (displayContent.testimonials.length === 0) {
+    return null;
   }
 
   return (
@@ -36,10 +38,10 @@ const Testimonials: React.FC<TestimonialsProps> = ({ content, headline }) => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7 }}
         >
-          <h2 className="testimonials-headline">{headline || 'What Our Happy Homeowners Say'}</h2>
+          <h2 className="testimonials-headline">{displayContent.mainHeadline}</h2>
           <div className="embla" ref={emblaRef}>
             <div className="embla__container">
-              {displayContent.map((testimonial) => (
+              {displayContent.testimonials.map((testimonial) => (
                 <div className="embla__slide" key={testimonial.id}>
                   <div className="testimonial-card">
                     <div className="testimonial-image">

@@ -1,8 +1,106 @@
 /* --- apps/public-site/src/components/Header.css --- */
-.header { width: 100%; background-color: var(--white); padding: 1rem 0; border-bottom: 1px solid var(--border-color); }
-.header-container { display: flex; justify-content: space-between; align-items: center; }
-.logo { height: 35px; width: auto; }
-@media (min-width: 768px) { .logo { height: 40px; } }
-.header-nav { display: flex; align-items: center; gap: 1.5rem; }
-.nav-link { font-weight: 600; color: var(--dark-navy); text-decoration: none; }
-.sell-button { background-color: var(--primary-green); color: white; padding: 0.75rem 1.5rem; border-radius: 6px; border: none; font-weight: 600; cursor: pointer; }
+.header { 
+  width: 100%; 
+  background-color: var(--white); 
+  padding: 1rem 0; 
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+
+.header-container { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+}
+
+.logo { 
+  height: 32px; 
+  width: auto; 
+  transition: opacity 0.2s ease;
+}
+
+.logo:hover {
+  opacity: 0.8;
+}
+
+@media (min-width: 768px) { 
+  .logo { 
+    height: 40px; 
+  } 
+}
+
+.header-nav { 
+  display: flex; 
+  align-items: center; 
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .header-nav {
+    gap: 1.5rem;
+  }
+}
+
+.nav-link { 
+  font-weight: 600; 
+  color: var(--dark-navy); 
+  text-decoration: none;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--primary-green);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-green);
+  transition: width 0.2s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.sell-button { 
+  background-color: var(--primary-green); 
+  color: var(--white); 
+  padding: 0.75rem 1.5rem; 
+  border-radius: var(--radius-md); 
+  border: none; 
+  font-weight: 600; 
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.sell-button:hover {
+  background-color: var(--secondary-green);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.sell-button:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 767px) {
+  .nav-link {
+    display: none;
+  }
+  
+  .sell-button {
+    font-size: 0.8rem;
+    padding: 0.6rem 1.2rem;
+  }
+}

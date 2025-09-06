@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+  "@repo/types": "*",
     "embla-carousel-react": "^8.6.0",
     "firebase": "^12.2.1",
     "framer-motion": "^12.23.12",

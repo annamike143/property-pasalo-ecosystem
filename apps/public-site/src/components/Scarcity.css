@@ -54,11 +54,11 @@
 
 /* We need to adjust the LiveSlots styles when embedded here */
 .embedded-live-slots .live-slots-data {
-    font-size: 4rem; /* Make it a bit smaller */
+    font-size: 4rem;
 }
 .embedded-live-slots .live-slots-label {
     letter-spacing: 1px;
 }
 .embedded-live-slots .live-slots-link {
-    display: none; /* Hide the link to the status page */
+    display: none;
 }

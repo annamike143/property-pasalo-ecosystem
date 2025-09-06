@@ -1,0 +1,16 @@
+/* --- apps/admin-portal/src/app/(admin)/inquiries/inquiries.css --- */
+/* We can re-use many of the listing page styles */
+.page-container { padding: 1rem; }
+.page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+.page-header h1 { margin: 0; }
+.controls-container { display: flex; margin-bottom: 2rem; }
+.search-bar { flex-grow: 1; padding: 0.75rem; border: 1px solid #ccc; border-radius: 6px; }
+.table-container { background-color: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); overflow: hidden; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 1rem; text-align: left; border-bottom: 1px solid #e1e4e8; }
+th { background-color: #f6f7f9; }
+.no-results { text-align: center; padding: 3rem; color: #5a6472; }
+.action-button.promote { background-color: var(--primary-green, #0B6E4F); color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; }
+.type-badge { padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem; font-weight: 600; color: white; }
+.type-badge.lead { background-color: var(--action-blue, #2B73FC); }
+.type-badge.seller_inquiry { background-color: var(--accent-gold, #F2B705); color: #333; }

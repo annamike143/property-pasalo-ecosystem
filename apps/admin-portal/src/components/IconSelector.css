@@ -1,0 +1,135 @@
+/* --- apps/admin-portal/src/components/IconSelector.css --- */
+.icon-selector {
+  position: relative;
+  display: inline-block;
+}
+
+.icon-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+  min-width: 120px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.icon-trigger:hover {
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.icon-trigger:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.selected-icon {
+  font-size: 1.5rem;
+}
+
+.placeholder {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.dropdown-arrow {
+  color: #6c757d;
+  font-size: 0.8rem;
+  transition: transform 0.2s ease;
+}
+
+.icon-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  margin-top: 2px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.icon-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.25rem;
+  padding: 0.75rem;
+}
+
+.icon-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.icon-option:hover {
+  background: #f8f9fa;
+  border-color: #e9ecef;
+}
+
+.icon-option.selected {
+  background: #3498db;
+  border-color: #3498db;
+  transform: scale(1.1);
+}
+
+.icon-option:active {
+  transform: scale(0.95);
+}
+
+/* Scrollbar styling for the dropdown */
+.icon-dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+
+.icon-dropdown::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.icon-dropdown::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.icon-dropdown::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .icon-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .icon-option {
+    width: 35px;
+    height: 35px;
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .icon-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

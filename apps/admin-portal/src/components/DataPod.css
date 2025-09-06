@@ -1,0 +1,26 @@
+/* --- apps/admin-portal/src/components/DataPod.css --- */
+.data-pod {
+  background-color: var(--white, #ffffff);
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border: 1px solid var(--border-color, #e1e4e8);
+}
+
+.data-pod-value {
+  font-family: var(--font-heading, 'Poppins');
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--primary-green, #0B6E4F);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.data-pod-title {
+  font-family: var(--font-body, 'Inter');
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--supporting-gray, #5a6472);
+  margin: 0;
+  text-transform: uppercase;
+}

@@ -1,116 +1,151 @@
 // --- apps/admin-portal/src/components/ImageUploader.tsx ---
 'use client';
 import React, { useState, useCallback } from 'react';
-import { httpsCallable } from 'firebase/functions';
-import { functions } from '@/firebase';
 import { useAuth } from '@/context/AuthContext';
 import './ImageUploader.css';
 
 // TypeScript Interface for our component's props
 interface ImageUploaderProps {
-  onUploadComplete: (url: string) => void;
-  currentImageUrl?: string | null;
+    onUploadComplete: (url: string) => void;
+    currentImageUrl?: string | null;
+    uploadId?: string; // Add unique ID prop
+    resize?: { method?: 'fit' | 'cover' | 'thumb' | 'scale'; width?: number; height?: number };
 }
 
-const ImageUploader: React.FC<ImageUploaderProps> = ({ onUploadComplete, currentImageUrl }) => {
-    const { user } = useAuth();
+const ImageUploader: React.FC<ImageUploaderProps> = ({ onUploadComplete, currentImageUrl, uploadId, resize }) => {
     const [uploading, setUploading] = useState(false);
-    const [error, setError] = useState<string | null>(null);
-    const [preview, setPreview] = useState<string | null>(currentImageUrl || null);
+    const [error, setError] = useState('');
+    const { user } = useAuth();
+    
+    // Generate a unique ID if one isn't provided
+    const uniqueId = uploadId || `imageUpload-${Math.random().toString(36).substr(2, 9)}`;
 
-    const handleUpload = useCallback(async (file: File) => {
-        if (!file) return;
+    const onFileChange = useCallback(async (event: React.ChangeEvent<HTMLInputElement>) => {
+        const files = event.target.files;
+        if (!files || files.length === 0) return;
 
-        // Check if user is authenticated
-        if (!user) {
-            setError('You must be logged in to upload images.');
+        const selectedFile = files[0];
+        
+        // Basic validation
+        if (!selectedFile.type.startsWith('image/')) {
+            setError('Please select a valid image file.');
             return;
         }
-        if (file.size > 5 * 1024 * 1024) { // 5MB limit
-            setError('File is too large. Max 5MB.');
+        
+        if (selectedFile.size > 5 * 1024 * 1024) { // 5MB
+            setError('File size should be less than 5MB.');
             return;
         }
 
         setUploading(true);
-        setError(null);
+        setError('');
 
-        // Create a temporary preview URL
-        const previewUrl = URL.createObjectURL(file);
-        setPreview(previewUrl);
+        try {
+            // Convert to base64
+            const reader = new FileReader();
+            reader.onload = async () => {
+                try {
+                    const base64Data = (reader.result as string).split(',')[1]; // Remove data:image/jpeg;base64, part
+                    
+                    // Use V2 HTTP function instead of callable for better authentication
+                    const authToken = await user?.getIdToken();
+                    
+                    const response = await fetch(
+                        'https://us-central1-property-pasalo-main.cloudfunctions.net/compressAndUploadImageV2',
+                        {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${authToken}`
+                            },
+                            body: JSON.stringify({
+                                fileBuffer: base64Data,
+                                fileName: selectedFile.name,
+                                contentType: selectedFile.type,
+                                resize: resize ? { method: resize.method || 'cover', width: resize.width, height: resize.height } : undefined
+                            })
+                        }
+                    );
 
-        // Read the file as a Base64 string to send to the function
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = async () => {
-            const base64String = (reader.result as string).split(',')[1];
-            
-            try {
-                // Add more detailed logging to debug the issue
-                console.log('Starting upload process...');
-                console.log('File details:', { name: file.name, type: file.type, size: file.size });
-                
-                const compressAndUploadImage = httpsCallable(functions, 'compressAndUploadImage');
-                
-                console.log('Calling Firebase function...');
-                const result = await compressAndUploadImage({
-                    fileBuffer: base64String,
-                    fileName: file.name,
-                    contentType: file.type,
-                });
-                
-                console.log('Function result:', result);
-                
-                const data = result.data as { success: boolean, url: string };
-                if (data.success && data.url) {
-                    onUploadComplete(data.url);
-                    setPreview(data.url); // Update preview to the final URL
-                } else {
-                    throw new Error('Upload failed on the server.');
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const data = await response.json();
+                    
+                    if (data.success && data.url) {
+                        onUploadComplete(data.url);
+                        console.log('Image uploaded successfully:', data.url);
+                    } else {
+                        setError(data.error || 'Upload failed. Please try again.');
+                    }
+                } catch (uploadError: unknown) {
+                    console.error('Upload error:', uploadError);
+                    
+                    if (uploadError instanceof Error) {
+                        if (uploadError.message.includes('unauthenticated')) {
+                            setError('You must be logged in to upload images.');
+                        } else if (uploadError.message.includes('permission-denied')) {
+                            setError('You do not have permission to upload images.');
+                        } else {
+                            setError(`Upload failed: ${uploadError.message}`);
+                        }
+                    } else {
+                        setError('An unknown error occurred during upload.');
+                    }
+                } finally {
+                    setUploading(false);
                 }
-            } catch (err) {
-                console.error('Detailed error information:');
-                console.error('Error object:', err);
-                console.error('Error message:', err instanceof Error ? err.message : 'Unknown error');
-                console.error('Error code:', (err as {code?: string})?.code);
-                console.error('Error details:', (err as {details?: string})?.details);
-                
-                setError('Upload failed. Please try again. Check console for details.');
-                setPreview(currentImageUrl || null); // Revert preview on error
-            } finally {
+            };
+            
+            reader.onerror = () => {
+                setError('Error reading file. Please try again.');
                 setUploading(false);
-            }
-        };
-        reader.onerror = () => {
-            setError('Failed to read file.');
+            };
+            
+            reader.readAsDataURL(selectedFile);
+        } catch (error) {
+            console.error('File reading error:', error);
+            setError('Error processing file. Please try again.');
             setUploading(false);
-        };
-    }, [onUploadComplete, currentImageUrl, user]);
-
-    const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.files && e.target.files[0]) {
-            handleUpload(e.target.files[0]);
         }
-    };
+    }, [onUploadComplete, user]);
 
     return (
-        <div className="uploader-container">
-            <div className="preview-box">
-                {preview ? (
-                    <img src={preview} alt="Preview" className="image-preview" />
+        <div className="image-uploader">
+            <div className="current-image">
+                {currentImageUrl ? (
+                    <img 
+                        src={currentImageUrl} 
+                        alt="Current" 
+                        style={{ width: '150px', height: '100px', objectFit: 'cover', borderRadius: '8px' }}
+                    />
                 ) : (
-                    <span>No Image</span>
+                    <div style={{ 
+                        width: '150px', 
+                        height: '100px', 
+                        backgroundColor: '#f0f0f0', 
+                        border: '2px dashed #ccc',
+                        borderRadius: '8px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: '#666'
+                    }}>
+                        <span>No Image</span>
+                    </div>
                 )}
             </div>
             <div className="uploader-controls">
                 <input
                     type="file"
-                    id="imageUpload"
+                    id={uniqueId}
                     accept="image/png, image/jpeg"
                     onChange={onFileChange}
                     style={{ display: 'none' }}
                     disabled={uploading}
                 />
-                <label htmlFor="imageUpload" className={`upload-button ${uploading ? 'disabled' : ''}`}>
+                <label htmlFor={uniqueId} className={`upload-button ${uploading ? 'disabled' : ''}`}>
                     {uploading ? 'Uploading...' : 'Choose Image'}
                 </label>
                 {error && <p className="error-text">{error}</p>}

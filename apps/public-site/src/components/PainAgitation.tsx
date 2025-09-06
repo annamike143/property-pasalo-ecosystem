@@ -1,11 +1,11 @@
-// --- apps/public-site/src/components/PainAgitation.tsx ---
+// --- apps/public-site/src/components/PainAgitation.tsx (DEFINITIVE FINAL POLISH) ---
 'use client';
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import './PainAgitation.css';
 
-// TypeScript Interfaces for our content structure
+// TypeScript Interfaces
 interface PainPoint {
   id: string;
   image: string;
@@ -24,13 +24,14 @@ const PainAgitation: React.FC<PainAgitationProps> = ({ content }) => {
   const displayContent = content || { mainHeadline: 'Loading...', painPoints: [] };
 
   return (
-    <section className="pain-section">
+    <section className="pain-agitation-section">
       <div className="container">
         <motion.h2
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          className="pain-agitation-headline"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.7 }}
         >
           {displayContent.mainHeadline}
         </motion.h2>
@@ -45,7 +46,15 @@ const PainAgitation: React.FC<PainAgitationProps> = ({ content }) => {
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.7 }}
               >
-                <Image src={point.image} alt={point.headline} width={500} height={400} style={{ width: '100%', height: 'auto', objectFit: 'contain' }} />
+                {point.image && (
+                  <Image 
+                    src={point.image} 
+                    alt={point.headline} 
+                    width={500} 
+                    height={400} 
+                    style={{ width: '100%', height: 'auto', objectFit: 'contain' }} 
+                  />
+                )}
               </motion.div>
               <motion.div 
                 className="pain-text-container"

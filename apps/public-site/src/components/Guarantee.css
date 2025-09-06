@@ -16,7 +16,7 @@
 }
 .guarantee-icon {
   font-size: 3rem;
-  color: var(--primary-green, #0B6E4F); /* Using Trust Green */
+  color: var(--primary-green, #0B6E4F);
   margin-bottom: 1.5rem;
 }
 .guarantee-box h3 {
@@ -27,21 +27,21 @@
     line-height: 1.7;
 }
 .final-cta {
-  transform: scale(1.1); /* Make the final CTA slightly larger */
+  transform: scale(1.1);
   animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
     0% {
         transform: scale(1.1);
-        box-shadow: 0 8px 25px rgba(0, 169, 224, 0.5);
+        box-shadow: 0 8px 25px rgba(0, 169, 224, 0.4);
     }
     50% {
         transform: scale(1.15);
-        box-shadow: 0 12px 35px rgba(0, 169, 224, 0.7);
+        box-shadow: 0 12px 35px rgba(0, 169, 224, 0.6);
     }
     100% {
         transform: scale(1.1);
-        box-shadow: 0 8px 25px rgba(0, 169, 224, 0.5);
+        box-shadow: 0 8px 25px rgba(0, 169, 224, 0.4);
     }
 }

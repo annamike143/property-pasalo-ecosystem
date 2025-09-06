@@ -1,0 +1,16 @@
+/* --- apps/admin-portal/src/app/(admin)/homeowners/homeowners.css --- */
+/* Reusing many styles for consistency */
+.page-container { padding: 1rem; }
+.page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+.page-header h1 { margin: 0; }
+.controls-container { display: flex; margin-bottom: 2rem; }
+.search-bar { flex-grow: 1; padding: 0.75rem; border: 1px solid #ccc; border-radius: 6px; }
+.table-container { background-color: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); overflow: hidden; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 1rem; text-align: left; border-bottom: 1px solid #e1e4e8; }
+th { background-color: #f6f7f9; }
+.no-results { text-align: center; padding: 3rem; color: #5a6472; }
+.profile-pic-container { width: 40px; height: 40px; border-radius: 50%; overflow: hidden; }
+.profile-pic-container img { width: 100%; height: 100%; object-fit: cover; }
+.profile-pic-placeholder { width: 100%; height: 100%; background-color: #eee; }
+.status-badge.homeowner { background-color: var(--primary-green, #0B6E4F); color: white; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.8rem; font-weight: 600; }

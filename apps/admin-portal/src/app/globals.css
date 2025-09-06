@@ -1,4 +1,59 @@
 /* --- apps/admin-portal/src/app/globals.css --- */
+
+:root {
+  /* Color System */
+  --primary-green: #0B6E4F;
+  --secondary-green: #0A5D43;
+  --accent-green: #14A085;
+  --dark-navy: #0A2540;
+  --medium-navy: #1E3A8A;
+  --light-navy: #3B82F6;
+  --white: #FFFFFF;
+  --light-gray: #F8F9FA;
+  --medium-gray: #6B7280;
+  --dark-gray: #374151;
+  --border-color: #E5E7EB;
+  --success-green: #10B981;
+  --warning-amber: #F59E0B;
+  --error-red: #EF4444;
+  --danger-red: #DC3545;
+  
+  /* Admin-specific colors */
+  --admin-bg: #f6f7f9;
+  --sidebar-bg: #2c3e50;
+  --sidebar-text: #ecf0f1;
+  --sidebar-hover: #34495e;
+  --card-bg: #ffffff;
+  --header-border: #e0e6ed;
+  
+  /* Typography */
+  --font-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  
+  /* Sidebar */
+  --sidebar-width: 250px;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -6,9 +61,10 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background-color: #f6f7f9;
+  font-family: var(--font-body);
+  background-color: var(--admin-bg);
   line-height: 1.6;
+  color: var(--dark-gray);
 }
 
 .admin-layout {
@@ -17,22 +73,23 @@ body {
 }
 
 .main-content {
-  margin-left: 250px;
-  width: calc(100% - 250px);
+  margin-left: var(--sidebar-width);
+  width: calc(100% - var(--sidebar-width));
   min-height: 100vh;
-  background-color: #f6f7f9;
+  background-color: var(--admin-bg);
 }
 
 .main-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: white;
-  border-bottom: 1px solid #e0e6ed;
+  padding: var(--spacing-md) var(--spacing-xl);
+  background-color: var(--card-bg);
+  border-bottom: 1px solid var(--header-border);
   position: sticky;
   top: 0;
   z-index: 100;
+  box-shadow: var(--shadow-sm);
 }
 
 .mobile-menu-button {
@@ -41,27 +98,35 @@ body {
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-  padding: 0.5rem;
-  color: #2c3e50;
+  padding: var(--spacing-sm);
+  color: var(--sidebar-bg);
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
+
+.mobile-menu-button:hover {
+  background-color: var(--light-gray);
 }
 
 .sign-out-button {
-  background-color: #dc3545;
-  color: white;
+  background-color: var(--danger-red);
+  color: var(--white);
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
   cursor: pointer;
   font-weight: 500;
-  transition: background-color 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .sign-out-button:hover {
   background-color: #c82333;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
 }
 
 .main-content-wrapper {
-  padding: 2rem;
+  padding: var(--spacing-xl);
 }
 
 .sidebar-overlay {
@@ -73,6 +138,104 @@ body {
   background: rgba(0, 0, 0, 0.5);
   z-index: 999;
   display: none;
+}
+
+/* Card Component */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.card-header {
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.card-header h2 {
+  margin: 0;
+  color: var(--dark-navy);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* Button Components */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  gap: var(--spacing-xs);
+  font-size: 0.9rem;
+}
+
+.btn-primary {
+  background-color: var(--primary-green);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-green);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--primary-green);
+  border: 1px solid var(--primary-green);
+}
+
+.btn-secondary:hover {
+  background-color: var(--primary-green);
+  color: var(--white);
+}
+
+.btn-danger {
+  background-color: var(--error-red);
+  color: var(--white);
+}
+
+.btn-danger:hover {
+  background-color: #dc2626;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Form Components */
+.form-group {
+  margin-bottom: var(--spacing-lg);
+}
+
+.form-label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  font-weight: 600;
+  color: var(--dark-gray);
+}
+
+.form-input {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary-green);
+  box-shadow: 0 0 0 3px rgba(11, 110, 79, 0.1);
 }
 
 /* Responsive Design */
@@ -87,7 +250,7 @@ body {
   }
 
   .main-header {
-    padding: 1rem;
+    padding: var(--spacing-md);
   }
 
   .mobile-menu-button {
@@ -95,7 +258,7 @@ body {
   }
 
   .main-content-wrapper {
-    padding: 1rem;
+    padding: var(--spacing-md);
   }
 
   .sidebar-overlay {
@@ -110,14 +273,14 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f6f7f9;
+  background-color: var(--admin-bg);
 }
 
 .loading-container div,
 .error-container div {
   text-align: center;
-  padding: 2rem;
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: var(--spacing-xl);
+  background-color: var(--card-bg);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
 }

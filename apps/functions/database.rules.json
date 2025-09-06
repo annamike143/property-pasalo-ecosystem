@@ -1,0 +1,15 @@
+{
+  "rules": {
+    ".read": true,
+    ".write": true,
+    "listings": {
+      ".indexOn": ["urlSlug", "status"]
+    },
+    "inquiries": {
+      ".indexOn": ["status", "type"]
+    },
+    "events": {
+      ".indexOn": "timestamp"
+    }
+  }
+}

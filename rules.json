@@ -1,0 +1,56 @@
+{
+  "rules": {
+    "inquiries": {
+  ".read": "auth != null && root.child('siteConfig/admins/' + auth.uid).val() === true",
+  ".write": "auth != null && root.child('siteConfig/admins/' + auth.uid).val() === true"
+    },
+    "clients": {
+  ".read": "auth != null && root.child('siteConfig/admins/' + auth.uid).val() === true",
+  ".write": "auth != null && root.child('siteConfig/admins/' + auth.uid).val() === true"
+    },
+    "homeowners": {
+  ".read": "auth != null && root.child('siteConfig/admins/' + auth.uid).val() === true",
+  ".write": "auth != null && root.child('siteConfig/admins/' + auth.uid).val() === true"
+    },
+    "testimonials": {
+      ".read": true,
+  ".write": "auth != null && root.child('siteConfig/admins/' + auth.uid).val() === true"
+    },
+    "listings": {
+      ".read": true,
+  ".write": "auth != null && root.child('siteConfig/admins/' + auth.uid).val() === true",
+      ".indexOn": "urlSlug"
+    },
+    "siteContent": {
+      ".read": true,
+  ".write": "auth != null && root.child('siteConfig/admins/' + auth.uid).val() === true"
+    },
+    "events": {
+  ".read": true,
+  ".write": false,
+      ".indexOn": "timestamp"
+    },
+    "leads": {
+  ".read": "auth != null && root.child('siteConfig/admins/' + auth.uid).val() === true",
+  ".write": "auth != null && root.child('siteConfig/admins/' + auth.uid).val() === true"
+    },
+    "activities": {
+      ".read": "auth != null && root.child('siteConfig/admins/' + auth.uid).val() === true",
+      ".write": "auth != null && root.child('siteConfig/admins/' + auth.uid).val() === true",
+      ".indexOn": "timestamp"
+    },
+    "liveStatus": {
+      ".read": true,
+  ".write": "auth != null && root.child('siteConfig/admins/' + auth.uid).val() === true"
+    }
+    ,
+    "siteConfig": {
+      "admins": {
+        "$uid": {
+          ".read": "auth != null && root.child('siteConfig/admins/' + auth.uid).val() === true",
+          ".write": "auth != null && (root.child('siteConfig/admins/' + auth.uid).val() === true || (auth.uid === $uid && root.child('siteConfig/admins').val() == null))"
+        }
+      }
+    }
+  }
+}

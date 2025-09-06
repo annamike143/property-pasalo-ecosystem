@@ -1,4 +1,4 @@
-/* --- apps/admin-portal/src/app/(admin)/listings/listings.css --- */
+/* --- apps/admin-portal/src/app/(admin)/listings/listings.css (ENHANCED) --- */
 .page-container { padding: 1rem; }
 .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
 .page-header h1 { margin: 0; }
@@ -22,3 +22,15 @@ td small { color: #5a6472; }
 .action-button.edit { background-color: #007bff; color: white; border: 1px solid #007bff; }
 .action-button.delete { background-color: transparent; color: #dc3545; border: 1px solid #dc3545; }
 .no-results { text-align: center; padding: 3rem; color: #5a6472; }
+
+.agent-name {
+    color: #007bff;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.no-agent {
+    color: #999;
+    font-style: italic;
+    font-size: 0.85rem;
+}

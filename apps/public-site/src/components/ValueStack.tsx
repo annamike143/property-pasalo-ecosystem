@@ -8,7 +8,7 @@ import './ValueStack.css';
 interface ValueItem {
   id: string;
   text: string;
-  value: string; // e.g., "₱35,000" or "Priceless!"
+  value: string;
 }
 interface ValueStackProps {
   content: {

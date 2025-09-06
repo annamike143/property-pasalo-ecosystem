@@ -1,23 +1,27 @@
-/* --- apps/public-site/src/components/PainAgitation.css --- */
-.pain-section {
-  background-color: var(--background-gray, #f7f9fc);
+/* --- apps/public-site/src/components/PainAgitation.css (DEFINITIVE FINAL POLISH) --- */
+.pain-agitation-section {
+  background-color: var(--background-gray);
 }
-.pain-section h2 {
+
+.pain-agitation-headline {
   text-align: center;
   margin-bottom: 4rem;
 }
+
 .pain-points-container {
   display: flex;
   flex-direction: column;
   gap: 5rem;
 }
+
 .pain-point-row {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
   align-items: center;
 }
-@media (min-width: 768px) {
+
+@media (min-width: 992px) {
   .pain-point-row {
     grid-template-columns: 1fr 1fr;
     gap: 5rem;
@@ -26,6 +30,21 @@
     order: -1; /* Flips the order for the alternating layout */
   }
 }
+
+.pain-image-container {
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: var(--white);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid var(--border-color);
+    line-height: 0;
+}
+
 .pain-text-container h3 {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.pain-text-container p {
+    font-size: 1.1rem;
+    line-height: 1.8;
 }

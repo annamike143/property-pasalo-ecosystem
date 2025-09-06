@@ -8,32 +8,39 @@
      ✓ externalDir
 
    Creating an optimized production build ...
- ✓ Compiled successfully in 2.1s
+ ✓ Compiled successfully in 2.6s
    Linting and checking validity of types ...
 
 ./src/app/layout.tsx
-61:11  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+62:11  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/components/LeadCaptureModal.tsx
+5:10  Warning: 'httpsCallable' is defined but never used.  @typescript-eslint/no-unused-vars
+7:10  Warning: 'functions' is defined but never used.  @typescript-eslint/no-unused-vars
 
 info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules
    Collecting page data ...
-   Generating static pages (0/4) ...
-   Generating static pages (1/4) 
-   Generating static pages (2/4) 
-   Generating static pages (3/4) 
- ✓ Generating static pages (4/4)
+   Generating static pages (0/6) ...
+   Generating static pages (1/6) 
+   Generating static pages (2/6) 
+   Generating static pages (4/6) 
+ ✓ Generating static pages (6/6)
    Finalizing page optimization ...
    Collecting build traces ...
 
 Route (app)                                 Size  First Load JS
-┌ ○ /                                     137 kB         244 kB
+┌ ○ /                                    10.3 kB         249 kB
 ├ ○ /_not-found                            988 B         103 kB
-└ ● /listings/[slug]                       959 B         108 kB
+├ ƒ /api/submit-lead                       122 B         102 kB
+├ ○ /listings                              194 B         110 kB
+└ ● /listings/[slug]                     9.22 kB         248 kB
 + First Load JS shared by all             102 kB
   ├ chunks/18-ef38cc2f87045b34.js        45.9 kB
   ├ chunks/87c73c54-24122e7b92478d00.js  54.2 kB
-  └ other shared chunks (total)             2 kB
+  └ other shared chunks (total)          2.04 kB
 
 
-○  (Static)  prerendered as static content
-●  (SSG)     prerendered as static HTML (uses generateStaticParams)
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
 

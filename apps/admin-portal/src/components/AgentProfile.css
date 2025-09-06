@@ -1,0 +1,258 @@
+/* --- apps/admin-portal/src/components/AgentProfile.css --- */
+.agent-profile-card,
+.agent-profile-inline,
+.agent-profile-detailed {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.agent-profile-card:hover,
+.agent-profile-detailed:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.agent-profile-header {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+.agent-profile-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.agent-profile-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.agent-profile-content {
+    padding: 20px;
+}
+
+/* Card variant */
+.agent-profile-card .agent-profile-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Inline variant */
+.agent-profile-inline {
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.agent-profile-inline .agent-profile-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 0;
+}
+
+/* Detailed variant */
+.agent-profile-detailed .agent-profile-content {
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+}
+
+.agent-photo {
+    flex-shrink: 0;
+}
+
+.agent-image {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.agent-placeholder {
+    border-radius: 50%;
+    background: #007bff;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.agent-placeholder.card,
+.agent-placeholder.inline {
+    width: 80px;
+    height: 80px;
+}
+
+.agent-placeholder.detailed {
+    width: 150px;
+    height: 150px;
+    font-size: 2.5rem;
+}
+
+.agent-info {
+    flex-grow: 1;
+}
+
+.agent-name {
+    margin: 0 0 8px 0;
+    color: #333;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.agent-profile-inline .agent-name {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+.agent-license,
+.agent-experience {
+    margin: 4px 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.agent-specialties {
+    margin: 10px 0;
+}
+
+.agent-specialties strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.specialty-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.agent-profile-card .specialty-tags {
+    justify-content: center;
+}
+
+.specialty-tag {
+    background: #e9ecef;
+    color: #495057;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.agent-bio {
+    margin: 15px 0;
+}
+
+.agent-bio strong {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.agent-bio p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.agent-contact {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #e9ecef;
+}
+
+.agent-profile-inline .agent-contact {
+    margin-top: 8px;
+    padding-top: 8px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.contact-item:last-child {
+    margin-bottom: 0;
+}
+
+.contact-icon {
+    font-size: 1rem;
+    width: 20px;
+}
+
+.contact-link {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.contact-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.agent-profile-skeleton {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    color: #666;
+    font-style: italic;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .agent-profile-detailed .agent-profile-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .agent-profile-inline .agent-profile-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .specialty-tags {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .agent-profile-content {
+        padding: 15px;
+    }
+    
+    .agent-profile-header {
+        padding: 10px 15px;
+    }
+    
+    .agent-name {
+        font-size: 1.1rem;
+    }
+    
+    .agent-placeholder.detailed {
+        width: 120px;
+        height: 120px;
+        font-size: 2rem;
+    }
+}

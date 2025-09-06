@@ -1,9 +1,200 @@
 /* --- apps/admin-portal/src/components/LandingPageBuilder.css --- */
-.builder-container { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-.builder-container h2 { margin-top: 0; }
-.section-list { margin-top: 2rem; }
-.section-card { display: flex; justify-content: space-between; align-items: center; background-color: #f6f7f9; padding: 1rem 1.5rem; border: 1px solid #e1e4e8; border-radius: 6px; margin-bottom: 1rem; font-weight: 600; }
-.section-actions { display: flex; gap: 1rem; }
-.section-actions button { padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 500; border: 1px solid #ccc; background: white; }
-.section-actions button.delete { border-color: #dc3545; color: #dc3545; }
-.builder-actions { margin-top: 2rem; }
+.builder-container { 
+  background: var(--card-bg); 
+  padding: var(--spacing-xl); 
+  border-radius: var(--radius-lg); 
+  box-shadow: var(--shadow-md); 
+}
+
+.builder-container h2 { 
+  margin: 0 0 var(--spacing-sm) 0;
+  color: var(--dark-navy);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.builder-container p {
+  color: var(--medium-gray);
+  margin-bottom: var(--spacing-xl);
+  line-height: 1.5;
+}
+
+.section-list { 
+  margin-top: var(--spacing-xl); 
+}
+
+.section-card { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  background-color: var(--light-gray); 
+  padding: var(--spacing-lg) var(--spacing-xl); 
+  border: 1px solid var(--border-color); 
+  border-radius: var(--radius-md); 
+  margin-bottom: var(--spacing-md); 
+  font-weight: 600;
+  color: var(--dark-gray);
+  transition: all 0.2s ease;
+}
+
+.section-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-green);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex-grow: 1;
+}
+
+.drag-handle {
+  cursor: grab;
+  color: var(--medium-gray);
+  font-size: 1.2rem;
+  padding: var(--spacing-sm);
+  line-height: 1;
+}
+
+.drag-handle:active {
+  cursor: grabbing;
+}
+
+.section-title {
+  font-weight: 600;
+  color: var(--dark-gray);
+}
+
+.order-controls {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.move-btn {
+  background: var(--primary-green);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.move-btn:hover:not(:disabled) {
+  background: var(--dark-green);
+}
+
+.move-btn:disabled {
+  background: var(--medium-gray);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.section-card span {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: 1rem;
+}
+
+.section-card span::before {
+  content: "≡";
+  color: var(--medium-gray);
+  font-size: 1.2rem;
+}
+
+.section-actions { 
+  display: flex; 
+  gap: var(--spacing-md); 
+}
+
+.section-actions button { 
+  padding: var(--spacing-sm) var(--spacing-lg); 
+  border-radius: var(--radius-md); 
+  cursor: pointer; 
+  font-weight: 500; 
+  border: 1px solid var(--border-color); 
+  background: var(--white);
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.section-actions button:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.section-actions button:first-child {
+  border-color: var(--primary-green);
+  color: var(--primary-green);
+}
+
+.section-actions button:first-child:hover {
+  background-color: var(--primary-green);
+  color: var(--white);
+}
+
+.section-actions button.delete { 
+  border-color: var(--error-red); 
+  color: var(--error-red); 
+}
+
+.section-actions button.delete:hover {
+  background-color: var(--error-red);
+  color: var(--white);
+}
+
+.builder-actions { 
+  margin-top: var(--spacing-xl);
+  display: flex;
+  justify-content: center;
+}
+
+.builder-actions button {
+  background-color: var(--primary-green);
+  color: var(--white);
+  border: none;
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+}
+
+.builder-actions button:hover {
+  background-color: var(--secondary-green);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .builder-container {
+    padding: var(--spacing-lg);
+  }
+  
+  .section-card {
+    padding: var(--spacing-md);
+    flex-direction: column;
+    gap: var(--spacing-md);
+    align-items: flex-start;
+  }
+  
+  .section-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  
+  .section-actions button {
+    flex: 1;
+    max-width: 120px;
+  }
+}

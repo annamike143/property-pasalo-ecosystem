@@ -1,4 +1,4 @@
-// --- apps/public-site/src/components/Solution.tsx ---
+// --- apps/public-site/src/components/Solution.tsx (DEFINITIVE FINAL POLISH) ---
 'use client';
 import React from 'react';
 import Image from 'next/image';
@@ -14,9 +14,8 @@ interface SolutionProps {
 }
 
 const Solution: React.FC<SolutionProps> = ({ content }) => {
-  const displayContent = content || { headline: 'LOADING...', portraitImage: '/placeholder.jpg', storyText: 'Loading founder story...' };
+  const displayContent = content || { headline: 'Loading...', portraitImage: '/placeholder.jpg', storyText: 'Loading founder story...' };
   
-  // Split the story text into paragraphs for better formatting
   const storyParagraphs = displayContent.storyText.split('\n').filter(p => p.trim() !== '');
 
   return (
@@ -45,9 +44,13 @@ const Solution: React.FC<SolutionProps> = ({ content }) => {
           transition={{ duration: 0.7, delay: 0.2 }}
         >
           <h2>{displayContent.headline}</h2>
-          {storyParagraphs.map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
-          ))}
+          {storyParagraphs.map((paragraph, index) => {
+              // The last paragraph gets special styling
+              if (index === storyParagraphs.length - 1) {
+                  return <p key={index} className="founder-result-statement">{paragraph}</p>;
+              }
+              return <p key={index}>{paragraph}</p>;
+          })}
         </motion.div>
       </div>
     </section>
